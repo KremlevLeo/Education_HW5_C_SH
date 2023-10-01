@@ -29,7 +29,14 @@ class Program
                 ArrPrint(resArr, resCount);
                 return true;
             case "2":
+                Console.Write("Enter Line 1 ");
+                double[] lineA = GetCoordinates();
+                Console.Write("Enter Line 2 ");
+                double[] lineB = GetCoordinates();
 
+                double x = -(lineA[1] - lineB[1]) / (lineA[0] - lineB[0]);
+                double y = lineB[0] * x + lineB[1];
+                Console.WriteLine($"b1 = {lineA[0]}, k1 = {lineA[1]}, b2 = {lineB[0]}, k2 = {lineB[1]} -> ({x};{y})");
                 return true;
             case "3":
                 return false;
@@ -48,5 +55,17 @@ class Program
             Console.Write($"{a[i]}");
         }
         Console.Write($" -> {b}");
+    }
+    private static double[] GetCoordinates()
+    {
+        double coordinCount = 0;
+        Console.Write("b, k separated by spaces: ");
+        string[] input = Console.ReadLine().Split();
+        double[] coordinatуs = new double[input.Length];
+        for (int i = 0; i < coordinatуs.Length; i++)
+        {
+            coordinatуs[i] = Convert.ToDouble(input[i]);
+        }
+        return coordinatуs;
     }
 }
